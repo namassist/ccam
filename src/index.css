@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.scale-6 {
+  transform: scale(0.5);
+}
+
+.scale-7 {
+  transform: scale(0.75);
+}
+
+.scale-8 {
+  transform: scale(0.9);
+}
+
+.scale-9 {
+  transform: scale(0.95);
+}
+
+.scale-10 {
+  transform: scale(1);
+}
+
+.scale-11 {
+  transform: scale(1.05);
+}
+
+.scale-12 {
+  transform: scale(1.1);
+}
+
+.scale-13 {
+  transform: scale(1.25);
+}
+
+.scale-14 {
+  transform: scale(1.5);
+}
+
+.w-4 {
+  width: 0%;
+}
+
+.w-3 {
+  width: 12.5%;
+}
+
+.w-2 {
+  width: 25%;
+}
+
+.w-1 {
+  width: 37.5%;
+}
+
+.w0 {
+  width: 50%;
+}
+
+.w1 {
+  width: 62.5%;
+}
+
+.w2 {
+  width: 75%;
+}
+
+.w3 {
+  width: 87.5%;
+}
+
+.w4 {
+  width: 100%;
+}
+
+.wf-2 {
+  width: 0%;
+}
+
+.wf-1 {
+  width: 25%;
+}
+
+.wf0 {
+  width: 50%;
+}
+
+.wf1 {
+  width: 75%;
+}
+
+.wf2 {
+  width: 100%;
+}
+
+.blur2 {
+  filter: blur(0);
+  filter: brightness(2px);
+}
+
+.blur1 {
+  filter: blur(0.5px);
+  filter: brightness(1px);
+}
+
+.blur0 {
+  filter: blur(0.75px);
+  filter: brightness(0.75px);
+}
+
+.blur-1 {
+  filter: blur(1px);
+  filter: brightness(0.5px);
+}
+
+.blur-2 {
+  filter: blur(1.25px);
+  filter: brightness(0.25px);
+}
