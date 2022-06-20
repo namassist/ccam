@@ -186,9 +186,30 @@ const App = () => {
           </div>
         </div>
       </div>
-      <div className="w-full lg:w-6/12 bg-gray-800 p-5 text-white rounded-lg flex justify-center items-center h-96 relative">
-        <span className="absolute h-10 bg-indigo-700 w-56"></span>
-        <span className="absolute h-56 bg-indigo-700 w-10"></span>
+      <div className="w-full lg:w-6/12 bg-gray-800 text-white rounded-lg flex justify-center items-center h-96 relative">
+        <span className="absolute h-10 bg-indigo-700 w-2/5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className={`absolute w-20 cursor-pointer transform transition-all duration-100 scale-105 -rotate-180 -left-1/4 -top-1/2 ${
+              pan === "right" ? "fill-red-700" : "fill-indigo-700"
+            }`}
+            viewBox="0 0 24 24"
+            onClick={handlePanRight}
+          >
+            <path d="M21 12l-18 12v-24z" />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className={`absolute w-20 cursor-pointer transform transition-all duration-100 scale-105 -right-1/4 -top-1/2 ${
+              pan === "left" ? "fill-red-700" : "fill-indigo-700"
+            }`}
+            viewBox="0 0 24 24"
+            onClick={handlePanLeft}
+          >
+            <path d="M21 12l-18 12v-24z" />
+          </svg>
+        </span>
+        <span className="absolute h-3/5 bg-indigo-700 w-10"></span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className={`absolute w-20 cursor-pointer transform transition-all duration-100 top-4 -rotate-90 hover:scale-105 ${
@@ -199,16 +220,7 @@ const App = () => {
         >
           <path d="M21 12l-18 12v-24z" />
         </svg>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className={`absolute w-20 cursor-pointer transform transition-all duration-100 right-44 hover:scale-105 ${
-            pan === "right" ? "fill-red-700" : "fill-indigo-700"
-          }`}
-          viewBox="0 0 24 24"
-          onClick={handlePanRight}
-        >
-          <path d="M21 12l-18 12v-24z" />
-        </svg>
+
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className={`absolute w-20 cursor-pointer transform transition-all duration-100 bottom-4 rotate-90 hover:scale-105 ${
@@ -216,16 +228,6 @@ const App = () => {
           }`}
           viewBox="0 0 24 24"
           onClick={handlePanBot}
-        >
-          <path d="M21 12l-18 12v-24z" />
-        </svg>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className={`absolute w-20 cursor-pointer transform transition-all duration-100 left-44 -rotate-180 hover:scale-105 ${
-            pan === "left" ? "fill-red-700" : "fill-indigo-700"
-          }`}
-          viewBox="0 0 24 24"
-          onClick={handlePanLeft}
         >
           <path d="M21 12l-18 12v-24z" />
         </svg>
