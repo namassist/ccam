@@ -1,48 +1,78 @@
 import { useState } from "react";
 
 const App = () => {
-  const [zoom, setZoom] = useState(10);
-  const [blur, setBlur] = useState(0);
-  const [value, setValue] = useState(0);
-  const [blurs, setBlurs] = useState(0);
-
-  const handleZoomIn = (e) => {
-    e.preventDefault();
-    if (zoom === 14) {
-      alert("maximal");
-    } else {
-      setZoom(zoom + 1);
-      setValue(value + 1);
-    }
-  };
-
-  const handleZoomOut = (e) => {
-    e.preventDefault();
-    if (zoom === 6) {
-      alert("minimal");
-    } else {
-      setZoom(zoom - 1);
-      setValue(value - 1);
-    }
-  };
+  const [focus, setFocus] = useState("initial");
+  const [zoom, setZoom] = useState("initial");
+  const [pan, setPan] = useState("initial");
 
   const handleFocusIn = (e) => {
     e.preventDefault();
-    if (blur === 2) {
-      alert("maximal");
+    if (focus === "initial" || focus === "out") {
+      setFocus("in");
     } else {
-      setBlur(blur + 1);
-      setBlurs(blurs + 1);
+      alert("mentok");
     }
   };
 
   const handleFocusOut = (e) => {
     e.preventDefault();
-    if (blur === -2) {
-      alert("minimal");
+    if (focus === "initial" || focus === "in") {
+      setFocus("out");
     } else {
-      setBlur(blur - 1);
-      setBlurs(blurs - 1);
+      alert("mentok");
+    }
+  };
+  const handleZoomIn = (e) => {
+    e.preventDefault();
+    if (zoom === "initial" || zoom === "out") {
+      setZoom("in");
+    } else {
+      alert("mentok");
+    }
+  };
+
+  const handleZoomOut = (e) => {
+    e.preventDefault();
+    if (zoom === "initial" || zoom === "in") {
+      setZoom("out");
+    } else {
+      alert("mentok");
+    }
+  };
+
+  const handlePanUp = (e) => {
+    e.preventDefault();
+    if (pan !== "up") {
+      setPan("up");
+    } else {
+      alert("mentok");
+    }
+  };
+
+  const handlePanRight = (e) => {
+    e.preventDefault();
+    if (pan !== "right") {
+      setPan("right");
+    } else {
+      alert("mentok");
+    }
+  };
+
+  const handlePanBot = (e) => {
+    e.preventDefault();
+    if (pan !== "bot") {
+      setPan("bot");
+    } else {
+      alert("mentok");
+    }
+  };
+
+  const handlePanLeft = (e) => {
+    e.preventDefault();
+    if (pan !== "left") {
+      setPan("left");
+    } else {
+      alert("mentok");
     }
   };
 
@@ -50,38 +80,52 @@ const App = () => {
     <div className="w-full lg:h-screen items-center justify-center bg-zinc-900 space-y-5 p-5 lg:flex lg:space-y-0 lg:space-x-5">
       <div className="w-full lg:w-6/12 bg-gray-800 py-20 text-white space-y-5 rounded-lg h-96">
         <div className="flex justify-center items-center space-x-2">
-          <div className="w-20 transform">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="fill-indigo-700 cursor-pointer transform hover:scale-105 hover:fill-indigo-600 transition-all duration-200"
-              viewBox="0 0 24 24"
-              onClick={handleFocusOut}
-            >
-              <path d="M3 12l18-12v24z" />
-            </svg>
+          <div className="w-20 transform flex items-center">
+            {focus === "out" || focus === "initial" ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="fill-indigo-700 cursor-pointer transform hover:scale-105 transition-all duration-75"
+                viewBox="0 0 24 24"
+                onClick={handleFocusIn}
+              >
+                <path d="M3 12l18-12v24z" />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="fill-indigo-700 cursor-pointer transform hover:scale-105 transition-all duration-75 border-r-8 border-cyan-600"
+                viewBox="0 0 24 24"
+                onClick={handleFocusIn}
+              >
+                <path d="M3 12l18-12v24z" />
+              </svg>
+            )}
           </div>
           <div className="w-2/4 lg:w-1/4">
             <div className="text-xl font-medium dark:text-white text-center mb-1">
               FOCUS
             </div>
-            <div className="bg-gray-200 rounded-full h-1.5">
-              <div
-                className={`bg-cyan-600 h-1.5 rounded-full wf${blurs} transition-all duration-300`}
-              ></div>
-            </div>
-            <div className="text-xs text-center mt-1 tracking-wide">
-              x.{blurs}
-            </div>
           </div>
           <div className="w-20 transform rotate-180">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="fill-indigo-700 cursor-pointer transform hover:scale-105 hover:fill-indigo-600 transition-all duration-200"
-              viewBox="0 0 24 24"
-              onClick={handleFocusIn}
-            >
-              <path d="M3 12l18-12v24z" />
-            </svg>
+            {focus === "in" || focus === "initial" ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="fill-indigo-700 cursor-pointer transform hover:scale-105 transition-all duration-75"
+                viewBox="0 0 24 24"
+                onClick={handleFocusOut}
+              >
+                <path d="M3 12l18-12v24z" />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="fill-indigo-700 cursor-pointer transform hover:scale-105 transition-all duration-75 border-r-8 border-cyan-600"
+                viewBox="0 0 24 24"
+                onClick={handleFocusOut}
+              >
+                <path d="M3 12l18-12v24z" />
+              </svg>
+            )}
           </div>
         </div>
         <div className="flex justify-around items-center space-x-10">
@@ -94,47 +138,96 @@ const App = () => {
         </div>
         <div className="flex justify-center items-center space-x-2">
           <div className="w-20 transform">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="fill-indigo-700 cursor-pointer transform hover:scale-105 hover:fill-indigo-600 transition-all duration-200"
-              viewBox="0 0 24 24"
-              onClick={handleZoomOut}
-            >
-              <path d="M3 12l18-12v24z" />
-            </svg>
+            {zoom === "out" || zoom === "initial" ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="fill-indigo-700 cursor-pointer transform hover:scale-105 transition-all duration-75"
+                viewBox="0 0 24 24"
+                onClick={handleZoomIn}
+              >
+                <path d="M3 12l18-12v24z" />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="fill-indigo-700 cursor-pointer transform hover:scale-105 transition-all duration-75 border-r-8 border-cyan-600"
+                viewBox="0 0 24 24"
+                onClick={handleZoomIn}
+              >
+                <path d="M3 12l18-12v24z" />
+              </svg>
+            )}
           </div>
           <div className="w-2/4 lg:w-1/4">
             <div className="text-xl font-medium dark:text-white text-center mb-1">
               ZOOM
             </div>
-            <div className="bg-gray-200 rounded-full h-1.5">
-              <div
-                className={`bg-cyan-600 h-1.5 rounded-full w${value} transition-all duration-300`}
-              ></div>
-            </div>
-            <div className="text-xs text-center mt-1 tracking-wide">
-              x.{value}
-            </div>
           </div>
           <div className="w-20 transform rotate-180">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="fill-indigo-700 cursor-pointer transform hover:scale-105 hover:fill-indigo-600 transition-all duration-200"
-              viewBox="0 0 24 24"
-              onClick={handleZoomIn}
-            >
-              <path d="M3 12l18-12v24z" />
-            </svg>
+            {zoom === "in" || zoom === "initial" ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="fill-indigo-700 cursor-pointer transform hover:scale-105 transition-all duration-75"
+                viewBox="0 0 24 24"
+                onClick={handleZoomOut}
+              >
+                <path d="M3 12l18-12v24z" />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="fill-indigo-700 cursor-pointer transform hover:scale-105 transition-all duration-75 border-r-8 border-cyan-600"
+                viewBox="0 0 24 24"
+                onClick={handleZoomOut}
+              >
+                <path d="M3 12l18-12v24z" />
+              </svg>
+            )}
           </div>
         </div>
       </div>
-      <div className="w-full lg:w-6/12 bg-gray-800 p-5 text-white rounded-lg flex justify-center items-center h-96">
+      <div className="w-full lg:w-6/12 bg-gray-800 p-5 text-white rounded-lg flex justify-center items-center h-96 relative">
+        <span className="absolute h-10 bg-indigo-700 w-56"></span>
+        <span className="absolute h-56 bg-indigo-700 w-10"></span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className={`h-60 fill-indigo-600 transform scale-${zoom} blur${blur}`}
+          className={`absolute w-20 cursor-pointer transform transition-all duration-100 top-4 -rotate-90 hover:scale-105 ${
+            pan === "up" ? "fill-red-700" : "fill-indigo-700"
+          } `}
           viewBox="0 0 24 24"
+          onClick={handlePanUp}
         >
-          <path d="M24 12l-6-5v4h-5v-5h4l-5-6-5 6h4v5h-5v-4l-6 5 6 5v-4h5v5h-4l5 6 5-6h-4v-5h5v4z" />
+          <path d="M21 12l-18 12v-24z" />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className={`absolute w-20 cursor-pointer transform transition-all duration-100 right-44 hover:scale-105 ${
+            pan === "right" ? "fill-red-700" : "fill-indigo-700"
+          }`}
+          viewBox="0 0 24 24"
+          onClick={handlePanRight}
+        >
+          <path d="M21 12l-18 12v-24z" />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className={`absolute w-20 cursor-pointer transform transition-all duration-100 bottom-4 rotate-90 hover:scale-105 ${
+            pan === "bot" ? "fill-red-700" : "fill-indigo-700"
+          }`}
+          viewBox="0 0 24 24"
+          onClick={handlePanBot}
+        >
+          <path d="M21 12l-18 12v-24z" />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className={`absolute w-20 cursor-pointer transform transition-all duration-100 left-44 -rotate-180 hover:scale-105 ${
+            pan === "left" ? "fill-red-700" : "fill-indigo-700"
+          }`}
+          viewBox="0 0 24 24"
+          onClick={handlePanLeft}
+        >
+          <path d="M21 12l-18 12v-24z" />
         </svg>
       </div>
     </div>
