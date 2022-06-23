@@ -10,7 +10,7 @@ const App = () => {
     if (focus === "initial" || focus === "out") {
       setFocus("in");
     } else {
-      alert("mentok");
+      setFocus("initial");
     }
   };
 
@@ -19,7 +19,7 @@ const App = () => {
     if (focus === "initial" || focus === "in") {
       setFocus("out");
     } else {
-      alert("mentok");
+      setFocus("initial");
     }
   };
   const handleZoomIn = (e) => {
@@ -27,7 +27,7 @@ const App = () => {
     if (zoom === "initial" || zoom === "out") {
       setZoom("in");
     } else {
-      alert("mentok");
+      setZoom("initial");
     }
   };
 
@@ -36,7 +36,7 @@ const App = () => {
     if (zoom === "initial" || zoom === "in") {
       setZoom("out");
     } else {
-      alert("mentok");
+      setZoom("initial");
     }
   };
 
@@ -45,7 +45,7 @@ const App = () => {
     if (pan !== "up") {
       setPan("up");
     } else {
-      alert("mentok");
+      setPan("initial");
     }
   };
 
@@ -54,7 +54,7 @@ const App = () => {
     if (pan !== "right") {
       setPan("right");
     } else {
-      alert("mentok");
+      setPan("initial");
     }
   };
 
@@ -63,7 +63,7 @@ const App = () => {
     if (pan !== "bot") {
       setPan("bot");
     } else {
-      alert("mentok");
+      setPan("initial");
     }
   };
 
@@ -72,7 +72,7 @@ const App = () => {
     if (pan !== "left") {
       setPan("left");
     } else {
-      alert("mentok");
+      setPan("initial");
     }
   };
 
